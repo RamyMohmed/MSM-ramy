@@ -323,3 +323,7 @@ def upload_json(request):
     else:
         form = UploadJsonForm()
     return render(request, 'med/upload_json.html', {'form': form})
+
+
+def welcome(request):
+    return render(request,'dashboard/welcome.html')
