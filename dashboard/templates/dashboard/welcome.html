@@ -115,6 +115,33 @@
     {% endfor %}
   </tbody>
 </table>
+<h2>Procedure Addition</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">physical_condition</th>
+      <th scope="col">electrical_safety</th>
+      <th scope="col">preventive_maintenance</th>
+      <th scope="col">preformance_testing</th>
+      <th scope="col">Approve</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for procedure in user.hospital.equipment_set.all %}
+      {% if not procedure.is_approved %}
+        <tr>
+          <td>{{ procedure.id }}</td>
+          <td>{{ procedure.physical_condition }}</td>
+          <td>{{ procedure.electrical_safety}}</td>
+          <td>{{ procedure.preventive_maintenance}}</td>
+          <td>{{ procedure.preformance_testing}}</td>
+          <td><a href="{% url 'approve_added_procedure' procedure.id %}"><button class="btn btn-primary">Approve</button></a></td>
+        </tr>
+      {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
 
 {% endif %}
 

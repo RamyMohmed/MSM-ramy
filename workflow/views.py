@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView, ListView, UpdateView, DetailView 
 from workflow.models import Ticket
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
-from .forms import TicketForm, TicketFormID, AssignEng, AddDepartmentForm, AddEquipmentForm, DepartmentUpdateForm, EquipmentUpdateForm, AddEquipmentIDForm, AssignDepartment, AddEditedEquipmentForm
+from .forms import TicketForm, TicketFormID, AssignEng, AddDepartmentForm, AddEquipmentForm, DepartmentUpdateForm, EquipmentUpdateForm, AddEquipmentIDForm, AssignDepartment, AddEditedEquipmentForm ,AddProcedureForm
 from django.urls import reverse_lazy
-from med.models import Department, Doctor, Engineer, Equipment, Manager, EditedEquipment
+from med.models import Department, Doctor, Engineer, Equipment, Manager, EditedEquipment, Procedure
 from authentication.models import User
 import time, datetime
 from django.contrib.auth.decorators import login_required
@@ -296,7 +296,7 @@ def update_edited_equipment(request, pk):
     equip.id = edited_equip.eq_id
     equip.save()
     edited_equip.delete()
-    return redirect('home')  
+    return redirect('welcome')  
 
 class Add_Edited_Equipment(LoginRequiredMixin, CreateView):
     model = EditedEquipment
@@ -374,7 +374,7 @@ def approve_added_equipment(request, pk):
     # approve it
     equipment.is_approved = True
     equipment.save()
-    return redirect('home')
+    return redirect('welcome')
 
     
 class Add_Equipment_ID(LoginRequiredMixin, CreateView):
@@ -403,4 +403,55 @@ class Add_Equipment_ID(LoginRequiredMixin, CreateView):
         dep = Department.objects.get(id = self.kwargs['pk'])
         context['equipment'] = dep.equipment_set.all()
         return context 
+
+
+
+
+
+
+
+
+class Add_Procedure(LoginRequiredMixin, CreateView):
+    model = Procedure
+    template_name = 'workflow/add_procedure.html'
+    form_class = AddProcedureForm
+    # context_object_name = 'equip' 
+    # success_url = reverse_lazy('department-list')
+
+    def get_success_url(self):
+        next = self.request.POST.get('next', self.request.META.get('HTTP_REFERER'))
+        if next:
+            return next
+        else:
+            return reverse_lazy('department-list')
+        
+    def get_form_kwargs(self):
+            kwargs = super(Add_Procedure, self).get_form_kwargs()
+            kwargs.update({'request': self.request})
+            return kwargs
+
+    def form_valid(self, form):
+        form.instance.hospital = Engineer.objects.get(id = self.request.user.id).current_hospital
+        if self.request.user.type == 'ENGINEER':
+            form.instance.is_approved = False
+        messages.success(self.request, f'A request to Add new Procedure has been sent, waiting for manager approval...')
+        return super().form_valid(form)
+    
+    def get_context_data(self, **kwargs):
+        context = super(Add_Procedure, self).get_context_data(**kwargs)
+        eng = Engineer.objects.get(id = self.request.user.id)
+        context['procedure'] = Procedure.objects.filter(hospital = eng.current_hospital)
+        context['eng'] = eng
+        return context
+
+@login_required
+def approve_added_procedure(request, pk):
+    #get equipment
+    procedure = Procedure.objects.get(id = pk)
+    # approve it
+    procedure.is_approved = True
+    procedure.save()
+    return redirect('welcome')
+
+
 

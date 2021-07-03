@@ -12,6 +12,7 @@ from med.views import (CreateHospitalView,
                         PreApprovedEquipmentDetails, 
                         generate_PDF,
                         upload_json,
+                        EquipmentProcedureView,
                         welcome)
 
 urlpatterns = [
@@ -22,6 +23,8 @@ urlpatterns = [
     path('department-list/', DepartmentListView.as_view(), name ='department-list'),
     path('hospital-details/<int:pk>/', HospitalDetailsView.as_view(), name ='hospital-details'),
     path('equipment-details/<int:pk>/', EquipmentDetailsView.as_view(), name ='equipment-details'),
+    path('equipment-procedure/<int:pk>/', EquipmentProcedureView.as_view(), name ='equipment-procedure'),
+
     path('pre-approved-equipment-details/<int:pk>/', PreApprovedEquipmentDetails.as_view(), name ='pre-approved-equipment-details'),
     path('department-details/<int:pk>/', DepartmentDetailsView.as_view(), name ='department-details'),
     path('list-notifications/', NotificationsListView.as_view(), name ='list-notifications'),

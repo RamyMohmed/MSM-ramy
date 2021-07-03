@@ -1,6 +1,6 @@
 from django import forms
 # from authentication.models import 
-from .models import Department, Equipment, Engineer, Hospital, Company
+from .models import Department, Equipment, Engineer, Hospital, Company , Procedure
 
 
 class CustomMMCF(forms.ModelMultipleChoiceField):

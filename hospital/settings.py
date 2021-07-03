@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
+#import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +27,7 @@ SECRET_KEY = 'vpvqkx1ftr!##i2618r)9(b(-&u^78%&53_&zcp^g#e%-xlyg^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hospital-msm.herokuapp.com']
+#ALLOWED_HOSTS = ['hospital-msm.herokuapp.com']
 
 
 # Application definition
@@ -156,6 +156,7 @@ EMAIL_PAGE_TEMPLATE = 'dashboard/confirm_template.html'
 EMAIL_PAGE_DOMAIN = 'http://localhost:8000/'
 #EMAIL_PAGE_DOMAIN = 'https://hospital-msm.herokuapp.com/'
 
+DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 
 # For Django Email Backend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -165,4 +166,4 @@ EMAIL_HOST_USER = 'engramymohamed15@gmail.com'
 EMAIL_HOST_PASSWORD = 'xxsnjfrrzpzlbipf'
 EMAIL_USE_TLS = True
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())

@@ -16,7 +16,7 @@
 <body class="text-center">
     <form class="form-signin" method="POST">
         {% csrf_token %}
-        <img class="mb-4" src="{% static 'dashboard/Untitled-1-01.png' %}" alt="" width="150" height="150">
+        <img class="mb-4" src="{% static 'dashboard/m.jpg' %}" alt="" width="150" height="150">
         {% if messages %}
         {% for message in messages %}
         <div class="alert alert-{{message.tags}}">
@@ -35,6 +35,11 @@
         <div class="border-top pt-3">
             <small class="muted-text">
                Need an Account ? <a href="{% url 'register' %}" class="ml-2">Sign Up!</a> 
+            </small>
+        </div>
+        <div class="border-top pt-3">
+            <small class="muted-text">
+                forget your password! <a href="{% url 'register' %}" class="ml-2">forget your password!</a> 
             </small>
         </div>
         <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>

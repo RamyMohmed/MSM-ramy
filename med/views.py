@@ -2,13 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import FormMixin
 from django.views.generic import CreateView, TemplateView, ListView, DetailView, UpdateView
-from .models import Engineer, Hospital, Doctor, Equipment, Manager, Notifications, Department, Company, EditedEquipment
+from .models import Engineer, Hospital, Doctor, Procedure , Equipment, Manager, Notifications, Department, Company, EditedEquipment
 from .forms import HospitalForm, CreateCompanyForm, UploadJsonForm
 from django.urls import reverse_lazy
 from django.db.models import Q
 from med.forms import JoinHospitalForm
 from authentication.models import User
-from workflow.models import Ticket
+from workflow.models import Ticket 
 import os
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
@@ -159,6 +159,34 @@ class EquipmentDetailsView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
                 return True 
             return True
         return False
+
+class EquipmentProcedureView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+    model = Equipment 
+    template_name = 'med/equipment_procedure.html'
+    context_object_name = 'equipment'
+    #can I send a specific context here ??
+
+    def get_context_data(self, **kwargs):
+        context = super(EquipmentProcedureView, self).get_context_data(**kwargs)
+        context['equipment'] = Equipment.objects.get(id = self.kwargs['pk'])
+        try:
+            context['ticket'] = Ticket.objects.get(Q(equipment = Equipment.objects.get(id = self.kwargs['pk'])), Q(status = 'OPEN'))
+            context['engineer'] = Procedure.objects.get(id = self.request.user.id)
+        except:
+            pass
+        return context
+    
+    def test_func(self):
+        eq = Equipment.objects.get(id = self.kwargs['pk'])
+        if eq.is_approved:
+            if self.request.user.type == 'ENGINEER':
+                eng = Engineer.objects.get(id = self.request.user.id)
+                if not self.get_object().department in eng.department.all():
+                    return False
+                return True 
+            return True
+        return False
+
 
 class PreApprovedEquipmentDetails(LoginRequiredMixin, DetailView):
     model = Equipment 

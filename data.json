@@ -40,7 +40,7 @@
     },
 
     {
-        "ER" : {
+        "OR" : {
             "Equipment" : [
                 {
                     "name" : "Operation Table", 
