@@ -1,0 +1,224 @@
+/* Colors: #bf1e2e , #2b3991 */
+
+:root {
+    --main-color: #2b3991;
+    --secondary-color: #bf1e2e;
+    --section-padding: 60px;
+    --section-background: #f6f6f6;
+    --main-duration: 0.5s;
+}
+
+
+/*Header*/
+
+.page-header {
+    line-height: 1;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.page-header-logo {
+    font-size: 3rem;
+    color: #2b3991;
+    font-weight: 1000px;
+}
+
+.page-header-logo .S {
+    color: #bf1e2e;
+}
+
+.page-header-logo:hover {
+    text-decoration: none;
+}
+
+.page-header .sing-in {
+    font-size: 20px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+
+/* nav bar*/
+
+.nav-scroller .nav .p-2 {
+    color: #2b3991;
+    font-size: x-large;
+    font-weight: 400;
+}
+
+
+/*end nav bar*/
+
+
+/*start landing*/
+
+.landing {
+    background-image: url(images/bermix-studio-b8mwvvFs8Ak-unsplash.jpg);
+    background-size: cover;
+    height: calc(100vh - 64px);
+    position: relative;
+}
+
+.landing .intro-text {
+    position: absolute;
+    left: 40%;
+    top: 40%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    max-width: 100%;
+}
+
+.landing .intro-text h1 {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 50px;
+    color: #2b3991;
+}
+
+.landing .intro-text h1 .sw {
+    color: #bf1e2e;
+}
+
+.landing .intro-text p {
+    font-size: 25px;
+    line-height: 1.5;
+}
+
+.landing .intro-text .demo {
+    font-size: 22px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+
+/* End Landing Section */
+
+
+/* Start Features */
+
+.features {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color: var(--section-background);
+}
+
+.features .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
+.features .feat {
+    padding: 20px;
+    text-align: center;
+}
+
+.features .feat i {
+    color: #bf1e2e;
+}
+
+.features .feat h3 {
+    font-weight: 600;
+    margin: 30px 0;
+    position: relative;
+    color: #2b3991;
+}
+
+.features .feat p {
+    line-height: 1.8;
+    color: #777;
+    font-size: 17px;
+}
+
+
+/* End Features */
+
+
+/*about MEMS*/
+
+.display-4 {
+    font-size: 3rem;
+    color: #bf1e2e;
+    line-height: 2;
+}
+
+.lead {
+    font-size: 22px;
+    font-family: "Lato", sans-serif;
+    line-height: 2;
+    letter-spacing: 4;
+}
+
+
+/*end about MEMS*/
+
+
+/* Solutions */
+
+.Sol {
+    font-size: 3rem;
+    color: #bf1e2e;
+    line-height: 2;
+}
+
+.sol {
+    font-size: 1.2rem;
+    color: #2b3991;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+
+/*pricing plans */
+
+.w3-third .one {
+    color: #2b3991;
+}
+
+.w3-third .two {
+    color: #bf1e2e;
+}
+
+.w3-third .three {
+    color: #2b3991;
+}
+
+.price {
+    font-size: 3rem;
+    color: #bf1e2e;
+    line-height: 2;
+}
+
+.pri {
+    font-size: 1.2rem;
+    color: #2b3991;
+    font-weight: bold;
+}
+
+.we {
+    font-size: 2.5rem;
+    color: #bf1e2e;
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    line-height: 2;
+}
+
+.con {
+    font-size: 2.5rem;
+    color: #bf1e2e;
+    line-height: 2;
+}
+
+.sign {
+    color: #bf1e2e;
+}
+
+.top {
+    color: #bf1e2e;
+}
+
+.social {
+    color: #bf1e2e;
+}
+
+
+/* THE END */

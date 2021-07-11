@@ -20,7 +20,8 @@ class ManagerSignUpForm(UserCreationForm):
     def save(self):
         user = super().save(commit=False)
         user.type = 'MANAGER'
-        user.is_active = False
+        # user.is_active = False
+        user.is_active = True
         user.save()
         send_email(user)
         return user
@@ -40,7 +41,8 @@ class EngineerSignUpForm(UserCreationForm):
     def save(self):
         user = super().save(commit=False)
         user.type = 'ENGINEER'
-        user.is_active = False
+        # user.is_active = False
+        user.is_active = True
         user.save()
         send_email(user)
         return user
@@ -55,7 +57,8 @@ class DoctorSignUpForm(UserCreationForm):
     def save(self):
         user = super().save(commit=False)
         user.type = 'DOCTOR'
-        user.is_active = False
+        # user.is_active = False
+        user.is_active = True
         user.save()
         send_email(user)
         return user
