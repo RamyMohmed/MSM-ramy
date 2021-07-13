@@ -31,8 +31,6 @@ def profile(request):
         return render(request, template_name='dashboard/profile.html', context={'user' : eng})
     elif(request.user.type == 'DOCTOR'):
         doc = Doctor.objects.get(id = request.user.id)
-        # if doc.photo_user.url == Null:
-            # doc.photo_user.url=#
         return render(request, template_name='dashboard/profile.html', context={'user' : doc})
     else:
         return render(request, template_name='dashboard/profile.html')
