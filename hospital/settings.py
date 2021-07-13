@@ -77,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mems-final.wsgi.application'
+# WSGI_APPLICATION = 'mems-final.wsgi.application'
 
 
 # Database
