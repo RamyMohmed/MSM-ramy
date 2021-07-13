@@ -11,10 +11,8 @@
             </div>
             <div class="mb-3">
                 <div class="image-preview" id="imagePreview">
-                  {% if 'photo_user' in user %}
-                    <img src="{{ user.photo_user.url}}" class="image-preview" alt="UserImage">
-                  {% endif %}
-                  </div>
+                  <img src="{{ user.photo_user.url }}" class="image-preview" alt="UserImage">
+                </div>
             </div>
             <form>
                 <div class="mb-3">
