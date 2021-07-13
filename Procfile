@@ -1,1 +1,1 @@
-web: gunicorn mems-final.wsgi --log-file -
+web: gunicorn mems-final.wsgi --log-file

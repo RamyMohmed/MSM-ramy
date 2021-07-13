@@ -142,7 +142,7 @@ class Assign_Engineer(LoginRequiredMixin, UpdateView):
             user.save()
         
         # send_mail('Work order',
-        #         'you have a new work order, please check it: https://hospital-msm.herokuapp.com/workflow/engineer_work/', 
+        #         'you have a new work order, please check it: https://mems-final.herokuapp.com/workflow/engineer_work/', 
         #         EMAIL_FROM_ADDRESS,
         #         [eng.email])
         return super().form_valid(form)
